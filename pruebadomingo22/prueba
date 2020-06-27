@@ -1,0 +1,85 @@
+]:
+%%writefile tableTest.cpp
+#include <iostream>
+#include "table.h"
+
+void Table::indexar(string nombreColumna) {
+    if (columnas[nombreColumna].getTipo() == "int") { // yes, columnas es un map.
+        auto k = [=](Fila* fila) { return fila.getInt(nombreColumna); };
+        arboles[nombreColumna] = new ArbolInt(k);
+    } else if (columnas[nombreColumna].getTipo() == "string") {
+        auto k = [=](Fila* fila) { return fila.getString(nombreColumna); };
+        arboles[nombreColumna] = new ArbolString(k);
+    } // Así para todos los demás tipos
+    for (auto fila : filas) {
+        arboles[nombreColumna]->add(fila);
+    }
+}
+
+string Table::getString(int numFila, string nombreColumna) {
+    return columns[NombreColumna].getString(numFila);
+}
+
+class Column {
+    string nombre;
+    string tipo;
+    vector<int> intData;
+    vector<string> strData;
+    vector<float> floatData;
+public:
+    void addInt(int dato) {
+        intData.push_back(dato);
+    }
+};
+
+string Column::getString(int 0) {
+    return strData[0];
+}
+
+void Fila::set(string nombreColumna, int dato) {
+    tabla->columnas[nombreColumna]->addInt(dato);
+}
+
+void Fila::set(string nombreColumna, string dato) {
+    tabla->columnas[nombreColumna]->addString(dato);
+}
+
+void Fila::set(string nombreColumna, float dato) {
+    tabla->columnas[nombreColumna]->addFloat(dato);
+}
+
+Fila* Table::createFila() {
+    return new Fila(this);
+}
+
+int main() {
+    Table* t1 = new Table();
+    
+    Column* c1 = new Column("dni", "int");
+    t1->addColumn(c1);
+    Column* c2 = new Column("nombre", "string");
+    t1->addColumn(c2);
+    Column* c3 = new Column("apellido", "string");
+    t1->addColumn(c3);
+
+    Fila* f1 = t1->createFila();
+    f1.set("dni", 1);
+    f1.set("nombre", "Rosa");
+    f1.set("apellido", "Rosales");
+
+    Fila* f2 = t1->createFila();
+    f2.set("dni", 6);
+    f2.set("nombre", "Felipe");
+    f2.set("apellido", "Flores");
+
+    Table* t2 = t1->select({"dni", "apellido"})
+
+    Table* t3 = t1->filter("apellido", "empieza con", "F")
+
+    cout << t1->getString(0, "apellido") << endl; // Rosales
+    cout << t3->getString(0, "apellido") << endl; // Flores
+
+    t1->indexar("dni");
+
+    return 0;
+}

@@ -11,8 +11,8 @@ public:
 	{
 		nombre = "prueba";
 		tipo = 1;
-		vector<int> entero=new vector<int>;
-		vector<string> palabra=new vector <string>;
+	 entero=vector<int>();
+		palabra= vector <string>();
 		
 
 	
@@ -21,8 +21,8 @@ public:
 	{
 		this->nombre = nombre;
 		this->tipo = tipo;
-		vector<int> entero = new vector<int>;
-		vector<string> palabra= new vector <string>;
+		 entero =  vector<int>();
+		 palabra=  vector <string>();
 
 	};
 	void agregarentero(int dato) {
@@ -40,7 +40,7 @@ public:
 		return entero[n];
 	}
 	~ccolumna() {};
-	agregar
+	
 	
 
 public:
