@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="columna.h" />
+    <ClInclude Include="fila.h" />
     <ClInclude Include="tabla.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

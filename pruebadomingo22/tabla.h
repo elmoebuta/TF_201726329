@@ -4,17 +4,21 @@
 class ctabla
 {
 public:
-	ctabla();
-	~ctabla();
+	ctabla() 
+	{
+		alto = vector<ccolumna>();
+
+	};
+	~ctabla() 
+	{
+		
+	};
+	void agregarcolumna(string nombre,int tipo)
+	{
+		alto.push_back(ccolumna(nombre, tipo));
+	}
 
 private:
-
+	vector<ccolumna> alto;
 };
 
-ctabla::ctabla()
-{
-}
-
-ctabla::~ctabla()
-{
-}
