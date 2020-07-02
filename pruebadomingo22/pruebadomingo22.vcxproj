@@ -142,8 +142,10 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="arbolavl.h" />
     <ClInclude Include="columna.h" />
     <ClInclude Include="fila.h" />
+    <ClInclude Include="nodoavl.h" />
     <ClInclude Include="tabla.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
